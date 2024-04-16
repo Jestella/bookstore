@@ -1,10 +1,48 @@
-import type { Metadata } from "next";
-import { Counter } from "./components/counter/Counter";
+"use client";
+
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import BookList from "./components/BookList";
+import BookModal from "./components/BookModal";
+import BookDetailsModal from "./components/BookDetailsModal";
+
+import styles from "./styles/home.module.scss";
 
 export default function IndexPage() {
-  return <Counter />;
-}
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [selectedBookId, setSelectedBookId] = useState<number | null>(null);
 
-export const metadata: Metadata = {
-  title: "Redux Toolkit",
-};
+  const toggleAddModal = () => {
+    setShowAddModal(!showAddModal);
+  };
+
+  const handleBookClick = (id: number) => {
+    setSelectedBookId(id);
+  };
+
+  const handleCloseBookDetails = () => {
+    setSelectedBookId(null);
+  };
+
+  const selectedBook = useSelector((state: RootState) =>
+    state.books.find((book) => book.id === selectedBookId)
+  );
+
+  return (
+    <div className="App">
+      <div className={styles.main}>
+        <button onClick={toggleAddModal} className={styles.addBook}>
+          <h3>Add Book</h3>
+        </button>
+        <BookList onBookClick={handleBookClick} />
+        {showAddModal && <BookModal onClose={toggleAddModal} />}
+        {selectedBookId !== null && (
+          <BookDetailsModal
+            book={selectedBook}
+            onClose={handleCloseBookDetails}
+          />
+        )}
+      </div>
+    </div>
+  );
+}

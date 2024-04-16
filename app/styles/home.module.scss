@@ -1,0 +1,117 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #555;
+}
+
+.addBook {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 1rem 0;
+  height: auto;
+  background-color: #c9d8fb;
+  color: #4f83fd;
+  border: none;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    color: #c9d8fb;
+    background-color: inherit;
+    border: 1px solid #fff;
+  }
+}
+
+// booklist
+
+.bookList {
+  padding: 2rem 5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bookItem {
+  background-color: #dde4f5;
+  width: 210px;
+  height: 260px;
+  border-radius: 10px;
+  margin: 1rem 0.5rem;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: #c8d6f7;
+  }
+}
+
+.bookInfo {
+  padding: 1rem;
+
+  h4 {
+    color: #555;
+  }
+
+  p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.8rem;
+  }
+}
+
+.btnContainer {
+  justify-self: center;
+
+  button {
+    width: 180px;
+    height: 30px;
+    border-radius: 20px;
+    border: solid 1px #555;
+    background-color: inherit;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      color: #dde4f5;
+      background-color: #555;
+      border: 1px solid #555;
+    }
+  }
+}
+
+// book modal
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContent {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: auto;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
