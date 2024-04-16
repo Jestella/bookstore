@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import BookList from "./components/BookList";
 import BookModal from "./components/BookModal";
 import BookDetailsModal from "./components/BookDetailsModal";
+import { RootState } from "../lib/store";
 
 import styles from "./styles/home.module.scss";
 
@@ -36,7 +37,7 @@ export default function IndexPage() {
         </button>
         <BookList onBookClick={handleBookClick} />
         {showAddModal && <BookModal onClose={toggleAddModal} />}
-        {selectedBookId !== null && (
+        {selectedBookId !== null && selectedBook !== undefined && (
           <BookDetailsModal
             book={selectedBook}
             onClose={handleCloseBookDetails}
